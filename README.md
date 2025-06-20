@@ -49,9 +49,8 @@ The remote Prisma MCP server follows the standard JSON-based configuration for M
 ```
 
 
-:::tip
-If you want to try it the remote MCP server and explore it's capabilities, we recommend [Cloudflare's AI Playground](https://playground.ai.cloudflare.com/) for that. Add the `https://mcp.prisma.io/mcp` URL into the text field with the **Enter MCP server URL** placeholder, click **Connect**, and then authenticate with the [Prisma Console](https://console.prisma.io) in the popup window. Once connected, you can send prompts to the Playground and see what MCP tools the LLM chooses based on your prompts.
-:::
+> [!TIP]
+> If you want to try it the remote MCP server and explore it's capabilities, we recommend [Cloudflare's AI Playground](https://playground.ai.cloudflare.com/) for that. Add the `https://mcp.prisma.io/mcp` URL into the text field with the **Enter MCP server URL** placeholder, click **Connect**, and then authenticate with the [Prisma Console](https://console.prisma.io) in the popup window. Once connected, you can send prompts to the Playground and see what MCP tools the LLM chooses based on your prompts.
 
 ### Sample prompts
 
@@ -69,11 +68,10 @@ You can start the local MCP server as follows:
 npx -y prisma mcp
 ```
 
-:::tip
 
-If you're using VS Code, you can use [VS Code agent mode](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode) to enter prompts such as "create Postgres database" or "apply schema migration" directly in the chat. The VS code agent handles all underlying Prisma CLI invocations and API calls automatically. See our [VS Code Agent documentation](/postgres/integrations/vscode-extension#agent-mode) for more details.
 
-:::
+> [!TIP]
+> If you're using VS Code, you can use [VS Code agent mode](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode) to enter prompts such as "create Postgres database" or "apply schema migration" directly in the chat. The VS code agent handles all underlying Prisma CLI invocations and API calls automatically. See our [VS Code Agent documentation](/postgres/integrations/vscode-extension#agent-mode) for more details.
 
 ### Tools
 
