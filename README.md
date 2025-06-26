@@ -356,3 +356,5 @@ async def main():
 # Run the async main function
 asyncio.run(main())
 ```
+---
+[Certified by MCP Review](https://mcpreview.com/mcp-servers/prisma/prisma)
