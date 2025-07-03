@@ -1,0 +1,112 @@
+name: Build and Publish DXT
+
+on:
+  push:
+    branches:
+      - main
+  # Adding workflow_dispatch to enable manual triggering
+  workflow_dispatch:
+    inputs:
+      create_release:
+        description: 'Create a release'
+        type: boolean
+        default: true
+
+jobs:
+  build-and-publish:
+    name: Build and Publish DXT
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetch all history for proper versioning
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: "dxt/server/package-lock.json"
+
+      - name: Install dependencies
+        run: |
+          cd dxt/server
+          npm install
+
+      - name: Build DXT file
+        run: |
+          cd dxt
+          npx @anthropic-ai/dxt pack
+
+      - name: Generate semantic version
+        id: semver
+        run: |
+          # Get the latest tag
+          git fetch --tags
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+
+          # Extract version components
+          MAJOR=$(echo $LATEST_TAG | sed 's/v\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\)/\1/')
+          MINOR=$(echo $LATEST_TAG | sed 's/v\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\)/\2/')
+          PATCH=$(echo $LATEST_TAG | sed 's/v\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\)/\3/')
+
+          # Increment patch version
+          PATCH=$((PATCH + 1))
+          NEW_VERSION="v$MAJOR.$MINOR.$PATCH"
+
+          # Set output variables
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          echo "Generated version: $NEW_VERSION"
+
+      - name: Generate commit details
+        id: commit_details
+        run: |
+          LATEST_TAG=${{ steps.semver.outputs.latest_tag }}
+
+          # Generate commit details since last tag
+          if [ "$LATEST_TAG" = "v0.0.0" ]; then
+            # If this is the first release, get all commits
+            COMMIT_DETAILS=$(git log --pretty=format:"- %h %s (%an)" --no-merges)
+          else
+            # Otherwise, get commits since the last tag
+            COMMIT_DETAILS=$(git log --pretty=format:"- %h %s (%an)" ${LATEST_TAG}..HEAD --no-merges)
+          fi
+
+          # Escape newlines for GitHub Actions
+          COMMIT_DETAILS="${COMMIT_DETAILS//'%'/'%25'}"
+          COMMIT_DETAILS="${COMMIT_DETAILS//$'\n'/'%0A'}"
+          COMMIT_DETAILS="${COMMIT_DETAILS//$'\r'/'%0D'}"
+
+          # Set output variables
+          echo "details<<EOF" >> $GITHUB_OUTPUT
+          echo "$COMMIT_DETAILS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      # Only create release if pushed to main or manually triggered with create_release=true
+      - name: Create GitHub Release
+        id: create_release
+        if: github.ref == 'refs/heads/main' || (github.event_name == 'workflow_dispatch' && github.event.inputs.create_release == 'true')
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.semver.outputs.version }}
+          name: Release ${{ steps.semver.outputs.version }}
+          draft: false
+          prerelease: false
+          files: ./dxt/dxt.dxt
+          body: |
+            # DXT Release ${{ steps.semver.outputs.version }}
+
+            Automatically generated DXT package.
+
+            ## Changes in this release
+
+            ${{ steps.commit_details.outputs.details }}
+
+            ## Build Information
+            - Built on: ${{ github.event.repository.updated_at }}
+            - Workflow Run: [View Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
