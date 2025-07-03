@@ -1,0 +1,30 @@
+{
+    "name": "prisma-mcp-dxt",
+    "version": "0.1.0",
+    "description": "Desktop Extensions package for Prisma local MCP server for easy installation in Claude Desktop",
+    "keywords": [
+      "prisma",
+      "mcp",
+      "dxt",
+      "database",
+      "orm"
+    ],
+    "homepage": "https://github.com/prisma/mcp#readme",
+    "bugs": {
+      "url": "https://github.com/prisma/mcp/issues"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+ssh://git@github.com/prisma/mcp.git"
+    },
+    "license": "Apache-2.0",
+    "type": "commonjs",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+      "prisma": "6.12.0-integration-fix-mcp-json-response.2"
+    }
+  }
+  

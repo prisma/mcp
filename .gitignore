@@ -1,0 +1,3 @@
+/dxt/server/node_modules/
+/dxt/**/*.dxt
+.DS_Store

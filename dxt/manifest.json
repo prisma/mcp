@@ -1,0 +1,81 @@
+{
+  "dxt_version": "0.1",
+  "name": "prisma-mcp",
+  "display_name": "PrismaX",
+  "version": "0.1.0",
+  "description": "Prisma MCP Server - manage Prisma Postgres, and Prisma ORM operations",
+  "author": {
+    "name": "Prisma, Inc.",
+    "email": "support@prisma.io",
+    "url": "https://www.prisma.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prisma/mcp"
+  },
+  "homepage": "https://www.prisma.io",
+  "documentation": "https://www.prisma.io/docs",
+  "support": "https://github.com/prisma/mcp/issues",
+  "icon": "icon.png",
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/server/index.js"
+      ],
+      "env": {
+        "CLI_PATH": "${__dirname}/server/node_modules/prisma/build/index.js"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "migrate-status",
+      "description": "Check the status of database migrations"
+    },
+    {
+      "name": "migrate-dev",
+      "description": "Create and apply database migrations in development"
+    },
+    {
+      "name": "migrate-reset",
+      "description": "Reset the database and apply all migrations"
+    },
+    {
+      "name": "Prisma-Postgres-account-status",
+      "description": "Check Prisma Postgres account authentication status"
+    },
+    {
+      "name": "Create-Prisma-Postgres-Database",
+      "description": "Create a new Prisma Postgres database"
+    },
+    {
+      "name": "Prisma-Login",
+      "description": "Authenticate with Prisma Console"
+    },
+    {
+      "name": "Prisma-Studio",
+      "description": "Open Prisma Studio for database browsing"
+    }
+  ],
+  "keywords": [
+    "database",
+    "orm",
+    "prisma",
+    "data",
+    "postgres",
+    "migrations",
+    "schema",
+    "mcp"
+  ],
+  "license": "MIT",
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}
