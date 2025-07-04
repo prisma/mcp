@@ -1,9 +1,9 @@
 {
   "dxt_version": "0.1",
   "name": "prisma-mcp",
-  "display_name": "PrismaX",
+  "display_name": "Prisma",
   "version": "0.1.0",
-  "description": "Prisma MCP Server - manage Prisma Postgres, and Prisma ORM operations",
+  "description": "Manage Prisma Postgres and Prisma ORM workflows from your desktop",
   "author": {
     "name": "Prisma, Inc.",
     "email": "support@prisma.io",
@@ -45,7 +45,7 @@
     },
     {
       "name": "Prisma-Postgres-account-status",
-      "description": "Check Prisma Postgres account authentication status"
+      "description": "Check your Prisma Postgres account authentication and connection status"
     },
     {
       "name": "Create-Prisma-Postgres-Database",
@@ -53,11 +53,11 @@
     },
     {
       "name": "Prisma-Login",
-      "description": "Authenticate with Prisma Console"
+      "description": "Sign in to Prisma Console to access cloud features"
     },
     {
       "name": "Prisma-Studio",
-      "description": "Open Prisma Studio for database browsing"
+      "description": "Launch Prisma Studio to visually browse and edit your database"
     }
   ],
   "keywords": [
@@ -75,7 +75,7 @@
     "claude_desktop": ">=0.10.0",
     "platforms": ["darwin", "win32", "linux"],
     "runtimes": {
-      "node": ">=18.0.0"
+      "node": ">=20.0.0"
     }
   }
 }
