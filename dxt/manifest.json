@@ -5,9 +5,9 @@
   "version": "0.1.0",
   "description": "Manage Prisma Postgres and Prisma ORM workflows from your desktop",
   "author": {
-    "name": "Prisma, Inc.",
+    "name": "Prisma",
     "email": "support@prisma.io",
-    "url": "https://www.prisma.io"
+    "url": "https://github.com/prisma"
   },
   "repository": {
     "type": "git",
