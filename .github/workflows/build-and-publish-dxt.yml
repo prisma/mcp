@@ -1,14 +1,10 @@
-name: Build and Publish DXT
+name: Build and Publish DXT (latest)
 
 on:
-  push:
-    branches:
-      - main
-  # Adding workflow_dispatch to enable manual triggering
   workflow_dispatch:
     inputs:
       create_release:
-        description: 'Create a release'
+        description: "Create a release"
         type: boolean
         default: true
 
