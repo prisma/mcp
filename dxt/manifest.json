@@ -16,6 +16,7 @@
   "homepage": "https://www.prisma.io",
   "documentation": "https://www.prisma.io/docs",
   "support": "https://github.com/prisma/mcp/issues",
+  "privacy_policies": "https://www.prisma.io/privacy",
   "icon": "icon.png",
   "server": {
     "type": "node",
