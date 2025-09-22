@@ -16,16 +16,14 @@
   "homepage": "https://www.prisma.io",
   "documentation": "https://www.prisma.io/docs",
   "support": "https://github.com/prisma/mcp/issues",
-  "privacy_policies": "https://www.prisma.io/privacy",
+  "privacy_policies": ["https://www.prisma.io/privacy"],
   "icon": "icon.png",
   "server": {
     "type": "node",
     "entry_point": "server/index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/server/index.js"
-      ],
+      "args": ["${__dirname}/server/index.js"],
       "env": {
         "CLI_PATH": "${__dirname}/server/node_modules/prisma/build/index.js"
       }

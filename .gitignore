@@ -1,3 +1,4 @@
 /dxt/server/node_modules/
 /dxt/**/*.dxt
+/dxt/**/*.mcpb
 .DS_Store
