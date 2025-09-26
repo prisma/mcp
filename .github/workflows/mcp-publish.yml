@@ -1,0 +1,26 @@
+name: Publish to MCP Registry
+# https://github.com/modelcontextprotocol/registry/blob/main/docs/guides/publishing/github-actions.md
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Install MCP Publisher
+        run: |
+          curl -L "https://github.com/modelcontextprotocol/registry/releases/download/v1.0.0/mcp-publisher_1.0.0_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
+
+      - name: Prepare private key
+        run: echo "${{ secrets.MCP_PUBLISH_PRIVATE_KEY }}" > key.pem
+
+      - name: Login to MCP Registry
+        run: ./mcp-publisher login dns --domain prisma.io --private-key $(openssl pkey -in key.pem -noout -text | grep -A3 "priv:" | tail -n +2 | tr -d ' :\n')
+
+      - name: Publish to MCP Registry
+        run: ./mcp-publisher publish
