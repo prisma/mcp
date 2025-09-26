@@ -1,0 +1,45 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+  "name": "io.prisma/mcp",
+  "description": "MCP server for Prisma workflows: local migrations, Studio, and hosted Prisma Postgres management.",
+  "status": "active",
+  "repository": {
+    "url": "https://github.com/prisma/mcp",
+    "source": "github"
+  },
+  "homepage": "https://www.prisma.io/docs/postgres/integrations/mcp-server",
+  "documentation": "https://www.prisma.io/docs/postgres/integrations/mcp-server",
+  "support": "https://prisma.io/support",
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "sse",
+      "url": "https://mcp.prisma.io/sse"
+    },
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.prisma.io/mcp"
+    }
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "prisma",
+      "version": "6.16.2",
+      "transport": {
+        "type": "stdio"
+      },
+      "packageArguments": [
+        { "type": "positional", "value": "mcp" }
+      ]
+    }
+  ],
+  "keywords": ["database", "orm", "prisma", "postgres", "migrations", "schema"],
+  "license": "MIT",
+  "author": {
+    "name": "Prisma",
+    "email": "support@prisma.io",
+    "url": "https://www.prisma.io"
+  }
+}
