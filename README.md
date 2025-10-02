@@ -115,7 +115,7 @@ In this section, we're covering the config formats of the most popular AI tools.
 
 ### VS Code 
 
-[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Server-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=prisma-postgres&config=%7B%22type%22%3A%20%22http%22%2C%22url%22%3A%20%22https%3A%2F%2Fmcp.prisma.io%2Fmcp%2F%22%7D)
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Server-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=prisma&config=%7B%22type%22%3A%20%22http%22%2C%22url%22%3A%20%22https%3A%2F%2Fmcp.prisma.io%2Fmcp%2F%22%7D)
 
 
 If your browser blocks the link, [you can set it up manually](https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_add-an-mcp-server-to-your-workspace) by creating a `.vscode/mcp.json` file in your workspace and adding:
