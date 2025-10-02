@@ -113,6 +113,50 @@ AI tools have different ways of integrating MCP servers. In most cases, there ar
 
 In this section, we're covering the config formats of the most popular AI tools.
 
+### VS Code 
+
+Install the Prisma MCP server in VS Code with a single click using the link below:
+<a
+  href="vscode:mcp/install?%7B%22name%22%3A%22prisma-postgres%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.prisma.io%2Fmcp%22%7D"
+  aria-label="Install Prisma MCP server in VS Code"
+  style={{
+    display: 'inline-flex',
+    alignItems: 'center',
+    borderRadius: '6px',
+    overflow: 'hidden',
+    textDecoration: 'none',
+    height: '2.0rem'
+  }}
+>
+  <span style={{ backgroundColor: '#2C2C2C', color: 'white', padding: '0.6rem 0.8rem' }}>
+    VS CODE
+  </span>
+  <span style={{ backgroundColor: '#0098FF', color: 'white', padding: '0.6rem 1rem' }}>
+    INSTALL PRISMA MCP SERVER
+  </span>
+</a>
+
+This will prompt you to open VS Code. Once opened, you'll be guided to install the Prisma MCP server directly into your VS Code configuration. 
+
+If your browser blocks the link, [you can set it up manually](https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_add-an-mcp-server-to-your-workspace) by creating a `.vscode/mcp.json` file in your workspace and adding:
+
+```json file=.vscode/mcp.json
+{
+  "servers": {
+    "Prisma-Local": {
+      "command": "npx",
+      "args": ["-y", "prisma", "mcp"]
+    },
+    "Prisma-Remote": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.prisma.io/mcp"]
+    }
+  }
+}
+```
+
+Explore additional Prisma features and workflows for VS Code in [our docs](https://prisma.io/docs/postgres/integrations/vscode).
+
 ### Cursor
 
 To learn more about Cursor's MCP integration, check out the [Cursor MCP docs](https://docs.cursor.com/context/model-context-protocol#configuration-locations).
