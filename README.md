@@ -115,28 +115,8 @@ In this section, we're covering the config formats of the most popular AI tools.
 
 ### VS Code 
 
-Install the Prisma MCP server in VS Code with a single click using the link below:
-<a
-  href="vscode:mcp/install?%7B%22name%22%3A%22prisma-postgres%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.prisma.io%2Fmcp%22%7D"
-  aria-label="Install Prisma MCP server in VS Code"
-  style={{
-    display: 'inline-flex',
-    alignItems: 'center',
-    borderRadius: '6px',
-    overflow: 'hidden',
-    textDecoration: 'none',
-    height: '2.0rem'
-  }}
->
-  <span style={{ backgroundColor: '#2C2C2C', color: 'white', padding: '0.6rem 0.8rem' }}>
-    VS CODE
-  </span>
-  <span style={{ backgroundColor: '#0098FF', color: 'white', padding: '0.6rem 1rem' }}>
-    INSTALL PRISMA MCP SERVER
-  </span>
-</a>
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Server-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=prisma-postgres&config=%7B%22type%22%3A%20%22http%22%2C%22url%22%3A%20%22https%3A%2F%2Fmcp.prisma.io%2Fmcp%2F%22%7D)
 
-This will prompt you to open VS Code. Once opened, you'll be guided to install the Prisma MCP server directly into your VS Code configuration. 
 
 If your browser blocks the link, [you can set it up manually](https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_add-an-mcp-server-to-your-workspace) by creating a `.vscode/mcp.json` file in your workspace and adding:
 
