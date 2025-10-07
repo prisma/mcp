@@ -2,7 +2,6 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
   "name": "io.prisma/mcp",
   "description": "MCP server for managing Prisma Postgres.",
-  "status": "active",
   "repository": {
     "url": "https://github.com/prisma/mcp",
     "source": "github"
