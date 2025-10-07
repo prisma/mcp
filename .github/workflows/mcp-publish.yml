@@ -52,11 +52,6 @@ jobs:
         env:
           MCP_PUBLISH_PRIVATE_KEY: ${{ secrets.MCP_PUBLISH_PRIVATE_KEY }}
 
-      - name: Login to MCP Registry (GitHub OIDC)
-        if: env.MCP_PUBLISH_PRIVATE_KEY == ''
-        run: ./mcp-publisher login github-oidc
-        env:
-          MCP_PUBLISH_PRIVATE_KEY: ${{ secrets.MCP_PUBLISH_PRIVATE_KEY }}
 
       - name: Publish to MCP Registry
         run: ./mcp-publisher publish
