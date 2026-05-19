@@ -326,6 +326,22 @@ Then add the JSON snippet to that configuration file:
 }
 ```
 
+Optional local guardrail for the local Prisma MCP server:
+
+```json
+{
+  "mcpServers": {
+    "Prisma-Local": {
+      "command": "armorer-guard",
+      "args": ["mcp-proxy", "--", "npx", "-y", "prisma", "mcp"]
+    },
+    // other MCP servers
+  }
+}
+```
+
+This uses [Armorer Guard](https://github.com/ArmorerLabs/Armorer-Guard) as a local MCP proxy that inspects tool-call arguments for prompt injection, credential leakage, exfiltration risk, and dangerous actions before forwarding safe calls to Prisma MCP.
+
 ### OpenAI Agents SDK
 
 Here's an example for using the Prisma MCP servers in a Python script via the OpenAI Agents SDK:
